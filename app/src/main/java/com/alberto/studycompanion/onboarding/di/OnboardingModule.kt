@@ -2,6 +2,8 @@ package com.alberto.studycompanion.onboarding.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.alberto.studycompanion.onboarding.data.repository.OnboardingRepositoryImpl
+import com.alberto.studycompanion.onboarding.domain.repository.OnboardingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,6 +19,12 @@ object OnboardingModule {
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("habits_onboarding_preferences", Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOnboardingRepository(sharedPreferences: SharedPreferences) : OnboardingRepository {
+        return OnboardingRepositoryImpl(sharedPreferences)
     }
 
 }
