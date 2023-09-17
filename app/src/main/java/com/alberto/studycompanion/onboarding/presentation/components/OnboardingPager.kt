@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.alberto.studycompanion.core.StudyButton
 import com.alberto.studycompanion.core.StudyTitle
 import com.alberto.studycompanion.onboarding.presentation.OnboardingPagerInfo
@@ -55,7 +56,11 @@ fun OnboardingPager(
                     horizontalAlignment = Alignment.CenterHorizontally)
                 {
                     Spacer(modifier = Modifier.height(32.dp))
-                    StudyTitle(title = pageInfo.title)
+                    Image(
+                        painter = painterResource(id = pageInfo.appName),
+                        contentDescription = "app name",
+                        modifier = Modifier.height(60.dp)
+                    )
                     Spacer(modifier = Modifier.height(32.dp))
                     Image(
                         painter = painterResource(id = pageInfo.image),
@@ -63,11 +68,13 @@ fun OnboardingPager(
                         modifier = Modifier.aspectRatio(1f)
                     )
                     Spacer(modifier = Modifier.height(32.dp))
+                    StudyTitle(pageInfo.title)
+                    Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = pageInfo.subtitle.uppercase(),
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            color = MaterialTheme.colorScheme.tertiary,
-                            fontWeight = FontWeight.Bold
+                        text = pageInfo.subtitle,
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = Color.Gray,
+                            fontSize = 17.sp
                         ),
                         textAlign = TextAlign.Center
                     )

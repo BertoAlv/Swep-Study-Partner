@@ -18,10 +18,10 @@ fun OnboardingScreen(
         }
     }
 
-    val pages = listOf<OnboardingPagerInfo>(
-        OnboardingPagerInfo(subtitle = "Using bla bla bla...", image = R.drawable.studying_photo),
-        OnboardingPagerInfo(subtitle = "Using bla bla bla...", image = R.drawable.sample_image1),
-        OnboardingPagerInfo(subtitle = "Esta es la ultima pantalla", image = R.drawable.sample_image2),
+    val pages = listOf(
+        OnboardingPagerInfo(title = "Set Your Objectives", subtitle = "You set your objectives, we help you to achieve them", image = R.drawable.sample_image1),
+        OnboardingPagerInfo(title = "Avoid Distractions", subtitle = "StudyPal helps you to stay focused so you can success on your journey.", image = R.drawable.distractions_image),
+        OnboardingPagerInfo(title = "Watch your progress", subtitle = "Sign Up now and see how much you can improve.", image = R.drawable.progress_img),
     )
 
 
