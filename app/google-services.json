@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "435652678989",
+    "project_id": "swep-e038b",
+    "storage_bucket": "swep-e038b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435652678989:android:bad2a501824acde9619304",
+        "android_client_info": {
+          "package_name": "com.alberto.studycompanion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoot627-mprFWdHIHupPpQI6ccjpPHliM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

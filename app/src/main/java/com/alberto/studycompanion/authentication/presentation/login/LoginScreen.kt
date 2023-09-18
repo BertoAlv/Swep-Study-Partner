@@ -49,8 +49,8 @@ fun LoginScreen(
             modifier = Modifier
                 .aspectRatio(1f)
                 .graphicsLayer {
-                    scaleX = 0.88f
-                    scaleY = 0.88f
+                    scaleX = 0.87f
+                    scaleY = 0.87f
                 }
         )
 
@@ -75,8 +75,14 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                StudyTitle(title = "WELCOME TO")
-                StudyTitle(title = "STUDY PARTNER")
+                StudyTitle(title = "WELCOME TO SWEP")
+                StudyTitle(title = "YOUR STUDY PARTNER")
+//                Spacer(modifier = Modifier.height(8.dp))
+//                Image(
+//                    painter = painterResource(id = R.drawable.logo_no_bg),
+//                    contentDescription = "Logo",
+//                    modifier = Modifier.height(50.dp)
+//                )
             }
 
             LoginForm(state, viewModel::onEvent , onSignUp)

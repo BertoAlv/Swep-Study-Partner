@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.alberto.studycompanion.authentication.presentation.login.LoginScreen
+import com.alberto.studycompanion.authentication.presentation.signup.SignUpScreen
+import com.alberto.studycompanion.home.presentation.HomeScreen
 import com.alberto.studycompanion.onboarding.presentation.OnboardingScreen
 
 @Composable
@@ -31,11 +33,26 @@ fun NavigationHost(
         }
         
         composable(NavigationRoute.SignUp.route){
-            Text(text = "ESTO ES EL SIGN UP")
+            SignUpScreen(
+                onGoLogin = { navHostController.popBackStack() },
+                onSignUp = { navHostController.navigate(NavigationRoute.Home.route) {
+                    popUpTo(navHostController.graph.id){
+                        inclusive = true
+                    }
+                }
+                }
+            )
         }
-        
+
         composable(NavigationRoute.Home.route){
-            Text(text = "ESTO ES LA HOME")
+            HomeScreen(
+                onNewMethod = { },
+                onSettings = { navHostController.navigate(NavigationRoute.Settings.route) }
+            )
+        }
+
+        composable(NavigationRoute.Settings.route) {
+            Text(text = "ESTAMOS EN SETTINGS")
         }
     }
 }
