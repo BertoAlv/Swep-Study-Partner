@@ -1,5 +1,6 @@
 package com.alberto.studycompanion.home.presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,11 +12,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.alberto.studycompanion.R
+import com.alberto.studycompanion.home.domain.models.Method
 import com.alberto.studycompanion.home.presentation.components.HomeMethod
 import com.alberto.studycompanion.home.presentation.components.HomeQuote
 import kotlin.random.Random
@@ -25,6 +28,7 @@ import kotlin.random.Random
 fun HomeScreen(
     onNewMethod: () -> Unit,
     onSettings: () -> Unit,
+    onMethodClick: (Method) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
 
@@ -46,7 +50,11 @@ fun HomeScreen(
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         CenterAlignedTopAppBar(title = {
-            Text(text = "Home")
+            Text(
+                text = "HOME",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
         }, navigationIcon = {
             IconButton(onClick = { onSettings() }) {
                 Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
@@ -85,7 +93,7 @@ fun HomeScreen(
             items(state.methods) {
                 HomeMethod(
                     method = it,
-                    onMethodClick = { },
+                    onMethodClick = { onMethodClick(it) },
                     modifier = Modifier.padding(vertical = 6.dp)
                 )
             }

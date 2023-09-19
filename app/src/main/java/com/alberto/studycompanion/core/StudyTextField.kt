@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun HabitPasswordTextfield(
+fun StudyPasswordTextfield(
     value: String,
     onValueChange: (String) -> Unit,
     contentDescription: String,
@@ -37,7 +37,7 @@ fun HabitPasswordTextfield(
     keyboardActions: KeyboardActions = KeyboardActions(),
     backgroundColor: Color = MaterialTheme.colorScheme.background
 ) {
-    HabitTextfield(
+    StudyTextfield(
         value = value,
         onValueChange = onValueChange,
         placeholder = placeholder,
@@ -55,7 +55,7 @@ fun HabitPasswordTextfield(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HabitTextfield(
+fun StudyTextfield(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String,
@@ -131,8 +131,8 @@ fun HabitTextfield(
 
 @Preview
 @Composable
-fun HabitTextfieldPreview() {
-    HabitTextfield(
+fun StudyTextfieldPreview() {
+    StudyTextfield(
         value = "",
         onValueChange = {},
         leadingIcon = Icons.Outlined.Lock,
@@ -144,8 +144,8 @@ fun HabitTextfieldPreview() {
 
 @Preview
 @Composable
-fun HabitTextfieldErrorPreview() {
-    HabitTextfield(
+fun StudyTextfieldErrorPreview() {
+    StudyTextfield(
         value = "",
         onValueChange = {},
         leadingIcon = Icons.Outlined.Lock,

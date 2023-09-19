@@ -14,9 +14,19 @@ class HomeViewModel @Inject constructor(private val homeUseCases: HomeUseCases) 
     var state by mutableStateOf(HomeState())
         private set
 
+    init {
+        getMethods()
+    }
+
     fun onEvent(event: HomeEvent) {
         when (event) {
         }
+    }
+
+    private fun getMethods(){
+        state = state.copy(
+            methods = homeUseCases.getMethodsUseCase()
+        )
     }
 
 }

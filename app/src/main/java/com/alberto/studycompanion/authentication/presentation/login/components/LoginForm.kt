@@ -33,8 +33,8 @@ import androidx.compose.ui.unit.dp
 import com.alberto.studycompanion.authentication.presentation.login.LoginEvent
 import com.alberto.studycompanion.authentication.presentation.login.LoginState
 import com.alberto.studycompanion.core.StudyButton
-import com.alberto.studycompanion.core.HabitPasswordTextfield
-import com.alberto.studycompanion.core.HabitTextfield
+import com.alberto.studycompanion.core.StudyPasswordTextfield
+import com.alberto.studycompanion.core.StudyTextfield
 
 
 @Composable
@@ -66,7 +66,7 @@ fun LoginForm(
                 color = MaterialTheme.colorScheme.background
             )
 
-            HabitTextfield(
+            StudyTextfield(
                 value = state.email,
                 onValueChange = { onEvent(LoginEvent.EmailChanged(it)) },
                 placeholder = "Email",
@@ -88,7 +88,7 @@ fun LoginForm(
                 isEnabled = !state.isLoading
             )
 
-            HabitPasswordTextfield(
+            StudyPasswordTextfield(
                 value = state.password,
                 onValueChange = { onEvent(LoginEvent.PasswordChanged(it)) },
                 placeholder = "Password",

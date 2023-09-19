@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpEvent
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpState
 import com.alberto.studycompanion.core.StudyButton
-import com.alberto.studycompanion.core.HabitPasswordTextfield
-import com.alberto.studycompanion.core.HabitTextfield
+import com.alberto.studycompanion.core.StudyPasswordTextfield
+import com.alberto.studycompanion.core.StudyTextfield
 import com.alberto.studycompanion.core.StudyTitle
 
 @Composable
@@ -46,7 +46,7 @@ fun SignUpForm(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        HabitTextfield(
+        StudyTextfield(
             value = state.email,
             onValueChange = { onEvent(SignUpEvent.EmailChanged(it)) },
             placeholder = "Email",
@@ -69,7 +69,7 @@ fun SignUpForm(
             backgroundColor = Color.White
         )
 
-        HabitPasswordTextfield(
+        StudyPasswordTextfield(
             value = state.password,
             onValueChange = { onEvent(SignUpEvent.PasswordChanged(it)) },
             contentDescription = "Enter password",
