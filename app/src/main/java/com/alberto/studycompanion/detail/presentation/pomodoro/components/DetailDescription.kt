@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.components
+package com.alberto.studycompanion.detail.presentation.pomodoro.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -40,7 +40,7 @@ fun DetailDescription(
                 text = description,
                 color = MaterialTheme.colorScheme.tertiary,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Light
             )
         }
     }

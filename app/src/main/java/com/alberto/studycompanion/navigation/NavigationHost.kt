@@ -9,7 +9,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.alberto.studycompanion.authentication.presentation.login.LoginScreen
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpScreen
-import com.alberto.studycompanion.detail.presentation.PomodoroScreen
+import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroScreen
+import com.alberto.studycompanion.detail.presentation.pomodoro.timer.PomodoroTimerScreen
 import com.alberto.studycompanion.home.presentation.HomeScreen
 import com.alberto.studycompanion.onboarding.presentation.OnboardingScreen
 
@@ -66,7 +67,7 @@ fun NavigationHost(
             when (it.arguments?.getString("methodName")){
                 "POMODORO" -> PomodoroScreen(
                     onBack = { navHostController.popBackStack() } ,
-                    onTimerChange = {}
+                    onTimerStarted = { navHostController.navigate(NavigationRoute.PomodoroTimer.route + "/${it}") }
                 )
                 "OTRO CUALQUIERA" -> Text(text = "SOY OTRO CUALQUIERA")
             }
@@ -74,6 +75,17 @@ fun NavigationHost(
 
         composable(NavigationRoute.Settings.route) {
             Text(text = "ESTAMOS EN SETTINGS")
+        }
+
+        composable(NavigationRoute.PomodoroTimer.route + "/{timeInMinutes}",
+            arguments = listOf(navArgument("timeInMinutes"){
+                type = NavType.IntType
+                nullable = false
+                defaultValue = 0
+            }
+            ))
+        {
+            PomodoroTimerScreen(timeInMinutes = it.arguments?.getInt("timeInMinutes"))
         }
 
     }

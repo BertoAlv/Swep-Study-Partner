@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation
+package com.alberto.studycompanion.detail.presentation.pomodoro
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,24 +22,31 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.alberto.studycompanion.R
-import com.alberto.studycompanion.detail.presentation.components.DetailDescription
-import com.alberto.studycompanion.detail.presentation.components.DetailUserInput
+import com.alberto.studycompanion.detail.presentation.pomodoro.components.DetailDescription
+import com.alberto.studycompanion.detail.presentation.pomodoro.components.DetailUserInput
+import com.alberto.studycompanion.detail.presentation.pomodoro.timer.PomodoroEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PomodoroScreen(
     onBack: () -> Unit,
-    onTimerChange: () -> Unit,
+    onTimerStarted: (Int) -> Unit,
+    viewModel: PomodoroViewModel = hiltViewModel(),
     modifier: Modifier = Modifier
 ) {
+
+    val state = viewModel.state
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         CenterAlignedTopAppBar(title = {
@@ -58,11 +65,28 @@ fun PomodoroScreen(
     {
         Column(modifier = Modifier
             .padding(it)
-            .padding(horizontal = 20.dp))
+            .padding(horizontal = 20.dp),
+            horizontalAlignment = CenterHorizontally)
         {
             DetailDescription(description = stringResource(id = R.string.pomodoro_description))
 
-            DetailUserInput(onTimerChange = { onTimerChange() })
+            DetailUserInput(state, onEvent = { viewModel.onEvent(it) }, modifier = Modifier.padding(vertical = 10.dp))
+            
+            Text(
+                text = "Start Timer",
+                modifier = Modifier.padding(vertical = 10.dp),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Image(
+                painter = painterResource(id = R.drawable.baseline_play_circle_24),
+                contentDescription = "Start Timer",
+                modifier = Modifier.clickable {
+                    onTimerStarted(state.minutes.toInt())
+                }
+            )
+
         }
     }
 

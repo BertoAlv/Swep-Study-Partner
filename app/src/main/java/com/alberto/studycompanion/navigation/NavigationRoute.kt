@@ -8,5 +8,6 @@ sealed class NavigationRoute(val route : String) {
     object Home : NavigationRoute("home")
     object Settings : NavigationRoute("settings")
     object Detail : NavigationRoute("detail")
+    object PomodoroTimer : NavigationRoute("PomodoroTimer")
 
 }
