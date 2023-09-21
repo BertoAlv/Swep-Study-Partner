@@ -32,6 +32,7 @@ fun StudyTimer(
     handleColor: Color,
     inactiveBarColor: Color,
     activeBarColor: Color,
+    onPomodoroFinished:() -> Unit,
     modifier: Modifier = Modifier,
     initialValue: Float = 1f,
     strokeWidth: Dp = 5.dp
@@ -46,7 +47,7 @@ fun StudyTimer(
         mutableStateOf(totalTime)
     }
     var isTimerRunning by remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
 
     LaunchedEffect(key1 = currentTime, key2 = isTimerRunning) {
@@ -54,6 +55,12 @@ fun StudyTimer(
             delay(100L)
             currentTime -= 100L
             value = currentTime / totalTime.toFloat()
+        }
+    }
+
+    LaunchedEffect(key1 = currentTime){
+        if (currentTime == 0L){
+            onPomodoroFinished()
         }
     }
 
@@ -135,5 +142,5 @@ fun StudyTimer(
 @Preview
 @Composable
 fun TimerPreview() {
-    StudyTimer(totalTime = 100L * 1000L, handleColor = Color.Green, inactiveBarColor = Color.DarkGray, activeBarColor = Color(0xFF37B900),modifier = Modifier.size(200.dp))
+    StudyTimer(totalTime = 100L * 1000L, handleColor = Color.Green, inactiveBarColor = Color.DarkGray, activeBarColor = Color(0xFF37B900), onPomodoroFinished = {}, modifier = Modifier.size(200.dp))
 }

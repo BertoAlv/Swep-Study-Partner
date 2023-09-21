@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.alberto.studycompanion.authentication.presentation.login.LoginScreen
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpScreen
+import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroBreakScreen
 import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroScreen
 import com.alberto.studycompanion.detail.presentation.pomodoro.timer.PomodoroTimerScreen
 import com.alberto.studycompanion.home.presentation.HomeScreen
@@ -80,12 +81,29 @@ fun NavigationHost(
         composable(NavigationRoute.PomodoroTimer.route + "/{timeInMinutes}",
             arguments = listOf(navArgument("timeInMinutes"){
                 type = NavType.IntType
-                nullable = false
-                defaultValue = 0
             }
             ))
         {
-            PomodoroTimerScreen(timeInMinutes = it.arguments?.getInt("timeInMinutes"))
+            PomodoroTimerScreen(
+                timeInMinutes = it.arguments?.getInt("timeInMinutes"),
+                onPomodoroFinished = { navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.PomodoroBreak.route + "/${it}" ) },
+                onFinish = { navHostController.popBackStack() }
+            )
+        }
+
+        composable(NavigationRoute.PomodoroBreak.route + "/{breakTime}",
+            arguments = listOf(navArgument("breakTime") {
+                type = NavType.IntType
+            }
+            ))
+        {
+            PomodoroBreakScreen(
+                pomodoroTime = it.arguments?.getInt("breakTime"),
+                onBreakFinished = { navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.PomodoroTimer.route + "/${it.arguments?.getInt("breakTime")}") },
+                onFinishSession = { navHostController.popBackStack() }
+            )
         }
 
     }
