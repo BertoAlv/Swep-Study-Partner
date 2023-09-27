@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.pomodoro.timer
+package com.alberto.studycompanion.detail.pomodoro.presentation.timer
 
 
 import androidx.compose.foundation.layout.Box
@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alberto.studycompanion.core.StudyTimer
-import com.alberto.studycompanion.detail.presentation.pomodoro.components.DetailDescription
+import com.alberto.studycompanion.detail.pomodoro.presentation.components.DetailDescription
 
 @Composable
 fun PomodoroTimerScreen(

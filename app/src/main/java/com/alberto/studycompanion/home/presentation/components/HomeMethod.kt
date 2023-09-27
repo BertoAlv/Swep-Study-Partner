@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,13 +39,18 @@ fun HomeMethod(
         .clickable { onMethodClick() }
         .padding(19.dp)) {
 
-        Image(painter = painterResource(id = method.image), contentDescription = "background image")
+        Image(
+            painter = painterResource(id = method.image),
+            contentDescription = "background image",
+            Modifier.height(105.dp).width(105.dp)
+        )
 
         Text(
             text = method.name,
+            color = MaterialTheme.colorScheme.tertiary,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
-            modifier=Modifier.align(Alignment.CenterEnd).padding(end = 40.dp)
+            modifier = Modifier.align(Alignment.CenterEnd).padding(end = 40.dp)
         )
     }
 

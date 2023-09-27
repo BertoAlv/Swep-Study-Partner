@@ -60,20 +60,7 @@ fun HomeScreen(
                 Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
             }
         })
-    },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = { onNewMethod() },
-                containerColor = MaterialTheme.colorScheme.primary,
-                shape = CircleShape
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "Create New Method",
-                    tint = MaterialTheme.colorScheme.tertiary
-                )
-            }
-        }
+    }
     ) {
         LazyColumn(
             modifier = Modifier

@@ -10,7 +10,9 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
 
     override fun getAllMethods(): List<Method> {
         return listOf(Method("POMODORO", R.drawable.pomodo_timer , Color(0xFFfedfbe)),
-            Method("OTRO CUALQUIERA", R.drawable.logo_no_bg ,Color.White))
+            Method("FEYNMAN",  R.drawable.feynman ,Color(0xFF63bab8)),
+            Method("TO DO LIST", R.drawable.notebook_edited ,Color.White)
+        )
     }
 
 }

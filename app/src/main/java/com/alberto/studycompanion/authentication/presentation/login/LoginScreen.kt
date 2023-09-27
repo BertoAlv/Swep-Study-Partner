@@ -75,7 +75,7 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                StudyTitle(title = "WELCOME TO SWEP")
+                StudyTitle(title = "WELCOME TO SWEP:")
                 StudyTitle(title = "YOUR STUDY PARTNER")
 //                Spacer(modifier = Modifier.height(8.dp))
 //                Image(

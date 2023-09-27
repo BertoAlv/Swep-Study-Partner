@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.pomodoro.timer
+package com.alberto.studycompanion.detail.pomodoro.presentation
 
 sealed interface PomodoroEvent {
 

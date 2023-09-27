@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import com.alberto.studycompanion.detail.feynman.data.VoiceToTextParser
 import com.alberto.studycompanion.navigation.NavigationHost
 import com.alberto.studycompanion.navigation.NavigationRoute
 import com.alberto.studycompanion.ui.theme.StudyCompanionTheme
@@ -20,6 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    val voiceToTextParser by lazy {
+        VoiceToTextParser(application)
+    }
 
     private val viewModel : MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavigationHost(navHostController = navController, startDestination = getStartDestination())
+                    NavigationHost(navHostController = navController, startDestination = getStartDestination(),voiceToTextParser)
                 }
             }
         }

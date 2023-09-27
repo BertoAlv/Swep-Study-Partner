@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.pomodoro.components
+package com.alberto.studycompanion.detail.pomodoro.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
@@ -30,8 +29,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroState
-import com.alberto.studycompanion.detail.presentation.pomodoro.timer.PomodoroEvent
+import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroState
+import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroEvent
 
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
@@ -54,7 +53,7 @@ fun DetailUserInput(
     {
 
         Text(
-            text = "Set the 'pomodoro' duration: ",
+            text = "Set 'pomodoro' duration: ",
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp
         )

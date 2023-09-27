@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.pomodoro.components
+package com.alberto.studycompanion.detail.pomodoro.presentation.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image

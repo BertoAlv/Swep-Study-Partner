@@ -1,4 +1,4 @@
-package com.alberto.studycompanion.detail.presentation.pomodoro
+package com.alberto.studycompanion.detail.pomodoro.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alberto.studycompanion.core.StudyTimer
-import com.alberto.studycompanion.detail.presentation.pomodoro.components.DetailDescription
+import com.alberto.studycompanion.detail.pomodoro.presentation.components.DetailDescription
 
 @Composable
 fun PomodoroBreakScreen(

@@ -9,16 +9,21 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.alberto.studycompanion.authentication.presentation.login.LoginScreen
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpScreen
-import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroBreakScreen
-import com.alberto.studycompanion.detail.presentation.pomodoro.PomodoroScreen
-import com.alberto.studycompanion.detail.presentation.pomodoro.timer.PomodoroTimerScreen
+import com.alberto.studycompanion.detail.feynman.data.VoiceToTextParser
+import com.alberto.studycompanion.detail.feynman.presentation.FeynmanScreen
+import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroBreakScreen
+import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroScreen
+import com.alberto.studycompanion.detail.pomodoro.presentation.timer.PomodoroTimerScreen
+import com.alberto.studycompanion.detail.todolist.presentation.detail.DetailScreen
+import com.alberto.studycompanion.detail.todolist.presentation.todo.ToDoScreen
 import com.alberto.studycompanion.home.presentation.HomeScreen
 import com.alberto.studycompanion.onboarding.presentation.OnboardingScreen
 
 @Composable
 fun NavigationHost(
     navHostController: NavHostController,
-    startDestination: NavigationRoute
+    startDestination: NavigationRoute,
+    voiceToTextParser: VoiceToTextParser
 ){
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
@@ -70,13 +75,18 @@ fun NavigationHost(
                     onBack = { navHostController.popBackStack() } ,
                     onTimerStarted = { navHostController.navigate(NavigationRoute.PomodoroTimer.route + "/${it}") }
                 )
-                "OTRO CUALQUIERA" -> Text(text = "SOY OTRO CUALQUIERA")
+                "TO DO LIST" -> ToDoScreen(
+                    onBack = { navHostController.popBackStack() },
+                    onNewTask = { navHostController.navigate(NavigationRoute.ToDoDetail.route) }
+                )
+                "FEYNMAN" -> FeynmanScreen(
+                    voiceToTextParser = voiceToTextParser,
+                    onBack = { navHostController.popBackStack() }
+                )
             }
         }
 
-        composable(NavigationRoute.Settings.route) {
-            Text(text = "ESTAMOS EN SETTINGS")
-        }
+
 
         composable(NavigationRoute.PomodoroTimer.route + "/{timeInMinutes}",
             arguments = listOf(navArgument("timeInMinutes"){
@@ -105,6 +115,23 @@ fun NavigationHost(
                 onFinishSession = { navHostController.popBackStack() }
             )
         }
+
+        composable(NavigationRoute.ToDoDetail.route) {
+            DetailScreen(
+                onBack = { navHostController.popBackStack() },
+                onSave = {
+                    navHostController.popBackStack()
+                    navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.Detail.route + "/TO DO LIST")
+                }
+            )
+        }
+
+        composable(NavigationRoute.Settings.route) {
+            Text(text = "ESTAMOS EN SETTINGS")
+        }
+
+
 
     }
 }

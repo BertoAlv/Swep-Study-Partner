@@ -3,4 +3,7 @@
     <string name="pomodoro_description">The Pomodoro study technique is a time management approach used to enhance productivity
         and concentration during study or work. It was developed by Francesco Cirillo in the late 1980s and is based on the idea of dividing
         time into intervals of concentrated work, known as \"pomodoros\", followed by short breaks.</string>
+    <string name="feynman_description">The Feynman Technique is a learning strategy where you choose a topic, explain it as if you were teaching it to someone else,
+        identify gaps in your understanding, and simplify your explanation until you can convey the concept in clear, simple terms. This process helps you grasp complex
+        subjects more effectively.</string>
 </resources>
