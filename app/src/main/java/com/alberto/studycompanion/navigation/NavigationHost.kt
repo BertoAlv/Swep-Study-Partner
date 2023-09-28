@@ -11,7 +11,7 @@ import com.alberto.studycompanion.authentication.presentation.login.LoginScreen
 import com.alberto.studycompanion.authentication.presentation.signup.SignUpScreen
 import com.alberto.studycompanion.detail.feynman.data.VoiceToTextParser
 import com.alberto.studycompanion.detail.feynman.presentation.FeynmanScreen
-import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroBreakScreen
+import com.alberto.studycompanion.detail.pomodoro.presentation.breakscreen.PomodoroBreakScreen
 import com.alberto.studycompanion.detail.pomodoro.presentation.PomodoroScreen
 import com.alberto.studycompanion.detail.pomodoro.presentation.timer.PomodoroTimerScreen
 import com.alberto.studycompanion.detail.todolist.presentation.detail.DetailScreen

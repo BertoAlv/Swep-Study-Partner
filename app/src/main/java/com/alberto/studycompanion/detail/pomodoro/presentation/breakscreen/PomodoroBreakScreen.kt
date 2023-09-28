@@ -1,5 +1,8 @@
-package com.alberto.studycompanion.detail.pomodoro.presentation
+package com.alberto.studycompanion.detail.pomodoro.presentation.breakscreen
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,19 +20,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.alberto.studycompanion.core.StudyTimer
 import com.alberto.studycompanion.detail.pomodoro.presentation.components.DetailDescription
+import com.alberto.studycompanion.detail.pomodoro.presentation.timer.PomodoroTimerEvent
+import com.alberto.studycompanion.detail.pomodoro.presentation.timer.PomodoroTimerViewModel
 
 @Composable
 fun PomodoroBreakScreen(
     onBreakFinished: () -> Unit,
     onFinishSession: () -> Unit,
     pomodoroTime: Int?,
+    viewModel: PomodoroTimerViewModel = hiltViewModel(),
     modifier: Modifier = Modifier.fillMaxSize()
 ) {
+    val context = LocalContext.current
 
     if (pomodoroTime != null) {
 
@@ -51,7 +60,10 @@ fun PomodoroBreakScreen(
                         handleColor = Color.Red,
                         inactiveBarColor = Color.DarkGray,
                         activeBarColor = Color(0xFFAC0707),
-                        onPomodoroFinished = { onBreakFinished() },
+                        onPomodoroFinished = {
+                            viewModel.onEvent(PomodoroTimerEvent.BreakEnded(context))
+                            onBreakFinished()
+                                             },
                         modifier = Modifier.size(200.dp)
                     )
                 }else{
@@ -60,7 +72,10 @@ fun PomodoroBreakScreen(
                         handleColor = Color.Red,
                         inactiveBarColor = Color.DarkGray,
                         activeBarColor = Color(0xFFAC0707),
-                        onPomodoroFinished = { onBreakFinished() },
+                        onPomodoroFinished = {
+                            viewModel.onEvent(PomodoroTimerEvent.BreakEnded(context))
+                            onBreakFinished()
+                                             },
                         modifier = Modifier.size(200.dp)
                     )
 
@@ -68,7 +83,10 @@ fun PomodoroBreakScreen(
 
                 Button(
                     modifier = Modifier.padding(vertical = 20.dp),
-                    onClick = { onFinishSession() },
+                    onClick = {
+
+                        onFinishSession()
+                              },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.White
                     )
