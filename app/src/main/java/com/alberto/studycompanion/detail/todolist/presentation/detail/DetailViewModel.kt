@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alberto.studycompanion.detail.todolist.domain.models.Task
 import com.alberto.studycompanion.detail.todolist.domain.usecase.AddTaskUseCase
+import com.alberto.studycompanion.detail.todolist.domain.usecase.GetCurrentUserIdUseCase
 import com.alberto.studycompanion.detail.todolist.domain.usecase.GetTaskByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val addTaskUseCase: AddTaskUseCase
+    private val addTaskUseCase: AddTaskUseCase,
+    private val getCurrentUserIdUseCase: GetCurrentUserIdUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(DetailState())
@@ -31,7 +33,8 @@ class DetailViewModel @Inject constructor(
                     val task = Task(
                         id = state.id ?: UUID.randomUUID().toString(),
                         name = state.taskName,
-                        isDone = false
+                        isDone = false,
+                        userId = getCurrentUserIdUseCase()
                     )
                     addTaskUseCase(task)
                 }

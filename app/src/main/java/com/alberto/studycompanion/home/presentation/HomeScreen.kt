@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -27,7 +28,7 @@ import kotlin.random.Random
 @Composable
 fun HomeScreen(
     onNewMethod: () -> Unit,
-    onSettings: () -> Unit,
+    onLogOut: () -> Unit,
     onMethodClick: (Method) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
@@ -55,9 +56,9 @@ fun HomeScreen(
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
             )
-        }, navigationIcon = {
-            IconButton(onClick = { onSettings() }) {
-                Icon(imageVector = Icons.Default.Settings, contentDescription = "settings")
+        }, actions = {
+            IconButton(onClick = { onLogOut() }) {
+                Icon(imageVector = Icons.Default.Logout, contentDescription = "log-out")
             }
         })
     }

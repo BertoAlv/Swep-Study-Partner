@@ -13,13 +13,13 @@ interface TaskApi {
         const val BASE_URL = "https://swep-e038b-default-rtdb.firebaseio.com/"
     }
 
-    @GET("tasks.json")
-    suspend fun getTasks() : TaskResponse
+    @GET("users/{userId}/tasks.json")
+    suspend fun getTasks(@Path("userId") userId: String) : TaskResponse
 
-    @PATCH("tasks.json")
-    suspend fun insertTask(@Body task: TaskResponse)
+    @PATCH("users/{userId}/tasks.json")
+    suspend fun insertTask(@Path("userId") userId: String, @Body task: TaskResponse)
 
-    @DELETE("tasks/{id}.json")
-    suspend fun deleteTaskById(@Path("id") taskId: String)
+    @DELETE("users/{userId}/tasks/{taskId}.json")
+    suspend fun deleteTaskById(@Path("userId") userId: String,@Path("taskId") taskId: String)
 
 }

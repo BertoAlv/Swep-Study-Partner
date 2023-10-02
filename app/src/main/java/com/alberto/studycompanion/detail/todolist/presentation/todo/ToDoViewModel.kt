@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.alberto.studycompanion.detail.todolist.domain.usecase.CompleteTaskUseCase
 import com.alberto.studycompanion.detail.todolist.domain.usecase.DeleteTaskUseCase
 import com.alberto.studycompanion.detail.todolist.domain.usecase.GetTasksUseCase
+import com.alberto.studycompanion.detail.todolist.domain.usecase.SyncTasksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -17,7 +18,8 @@ import javax.inject.Inject
 class ToDoViewModel @Inject constructor(
     private val completeTaskUseCase: CompleteTaskUseCase,
     private val deleteTaskUseCase: DeleteTaskUseCase,
-    private val getTasksUseCase: GetTasksUseCase
+    private val getTasksUseCase: GetTasksUseCase,
+    private val syncTasksUseCase: SyncTasksUseCase
     ) : ViewModel() {
 
     var state by mutableStateOf(ToDoState())
@@ -25,6 +27,9 @@ class ToDoViewModel @Inject constructor(
 
     init {
         getTasks()
+        viewModelScope.launch {
+            syncTasksUseCase()
+        }
     }
 
     fun onEvent(event: ToDoEvent) {

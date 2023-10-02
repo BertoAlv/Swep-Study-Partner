@@ -37,7 +37,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavigationHost(navHostController = navController, startDestination = getStartDestination(),voiceToTextParser)
+                    NavigationHost(
+                        navHostController = navController,
+                        startDestination = getStartDestination(),
+                        voiceToTextParser,
+                        logout = { viewModel.logout() })
                 }
             }
         }

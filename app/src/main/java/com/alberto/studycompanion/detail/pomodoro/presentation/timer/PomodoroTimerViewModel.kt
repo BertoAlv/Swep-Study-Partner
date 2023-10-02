@@ -1,18 +1,17 @@
 package com.alberto.studycompanion.detail.pomodoro.presentation.timer
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModel
 import com.alberto.studycompanion.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
 
 @HiltViewModel
 class PomodoroTimerViewModel @Inject constructor() : ViewModel() {
@@ -61,6 +60,8 @@ class PomodoroTimerViewModel @Inject constructor() : ViewModel() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setVibrate(longArrayOf(0, 500, 100, 500)) // Vibration pattern (off, on, off, on)
 
+        notificationBuilder.setDefaults(Notification.DEFAULT_ALL)
+
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.notify(notificationId, notificationBuilder.build())
 
@@ -76,6 +77,8 @@ class PomodoroTimerViewModel @Inject constructor() : ViewModel() {
             val channel = NotificationChannel(channelId, channelName, importance).apply {
                 description = channelDescription
             }
+
+            channel.enableVibration(true)
 
             val notificationManager = context.getSystemService(NotificationManager::class.java)
             notificationManager.createNotificationChannel(channel)

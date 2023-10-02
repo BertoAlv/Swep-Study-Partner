@@ -23,7 +23,8 @@ import com.alberto.studycompanion.onboarding.presentation.OnboardingScreen
 fun NavigationHost(
     navHostController: NavHostController,
     startDestination: NavigationRoute,
-    voiceToTextParser: VoiceToTextParser
+    voiceToTextParser: VoiceToTextParser,
+    logout:() -> Unit
 ){
     NavHost(navController = navHostController, startDestination = startDestination.route) {
         composable(NavigationRoute.Onboarding.route) {
@@ -57,7 +58,14 @@ fun NavigationHost(
         composable(NavigationRoute.Home.route){
             HomeScreen(
                 onNewMethod = { },
-                onSettings = { navHostController.navigate(NavigationRoute.Settings.route)},
+                onLogOut = {
+                    logout()
+                    navHostController.navigate(NavigationRoute.Login.route) {
+                        popUpTo(navHostController.graph.id){
+                            inclusive = true
+                        }
+                    }
+                           },
                 onMethodClick = { navHostController.navigate(NavigationRoute.Detail.route + "/${it.name}") }
             )
         }
@@ -126,12 +134,6 @@ fun NavigationHost(
                 }
             )
         }
-
-        composable(NavigationRoute.Settings.route) {
-            Text(text = "ESTAMOS EN SETTINGS")
-        }
-
-
 
     }
 }

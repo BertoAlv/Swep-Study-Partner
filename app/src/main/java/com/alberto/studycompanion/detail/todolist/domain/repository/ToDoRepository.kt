@@ -12,4 +12,8 @@ interface ToDoRepository {
     suspend fun getTaskById(id : String) : Task
 
     suspend fun deleteTask(id : String)
+
+    suspend fun getCurrentUserId() : String
+
+    suspend fun syncTasks()
 }

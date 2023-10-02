@@ -2,6 +2,7 @@ package com.alberto.studycompanion.detail.todolist.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import com.alberto.studycompanion.detail.todolist.data.local.TaskDAO
 import com.alberto.studycompanion.detail.todolist.data.local.TaskDatabase
 import com.alberto.studycompanion.detail.todolist.data.remote.TaskApi
@@ -26,8 +27,8 @@ object ToDoModule {
 
     @Provides
     @Singleton
-    fun provideToDoRepository(api : TaskApi, dao : TaskDAO) : ToDoRepository {
-        return ToDoRepositoryImpl(api,dao)
+    fun provideToDoRepository(api : TaskApi, dao : TaskDAO, workManager: WorkManager) : ToDoRepository {
+        return ToDoRepositoryImpl(api,dao, workManager)
     }
 
     @Provides
@@ -64,4 +65,11 @@ object ToDoModule {
             .build().create(TaskApi::class.java)
     }
 
-}
+    @Singleton
+    @Provides
+    fun provideWorkManager(@ApplicationContext context: Context): WorkManager {
+        return WorkManager.getInstance(context)
+    }
+
+
+    }
