@@ -37,4 +37,4 @@ Feynman             |  To-do List
 
 ## Installation
 
-You can download the app from the Google PlayStore here: <a href="https://play.google.com/store/apps/details?id=com.alberto.studycompanion"> SWEP : Study Companion </a>
+You can download the app from the Google PlayStore here: <a href="https://play.google.com/store/apps/details?id=com.alberto.studycompanion"> SWEP : Study Partner </a>
