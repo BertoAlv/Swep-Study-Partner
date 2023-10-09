@@ -1,4 +1,4 @@
-# SWEP : Study Companion
+# SWEP : Study Partner
 This Android application is designed to help you being more productive. It provides some proven methods to improve your study sessions.
 It is written in Kotlin, using Jetpack Compose and follows best practices such as MVVM architecture, clean architecture principles and SOLID. 
 
